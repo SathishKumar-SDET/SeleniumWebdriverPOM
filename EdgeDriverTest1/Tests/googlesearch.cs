@@ -1,0 +1,47 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+
+
+namespace EdgeDriverTest1
+{
+    [TestClass]
+    public class googlesearch
+    {
+        // In order to run the below test(s), 
+        // please follow the instructions from http://go.microsoft.com/fwlink/?LinkId=619687
+        // to install Microsoft WebDriver.
+
+        private EdgeDriver _driver;
+
+        [TestInitialize]
+        public void EdgeDriverInitialize()
+        {
+            // Initialize edge driver 
+            var options = new EdgeOptions
+            {
+                PageLoadStrategy = PageLoadStrategy.Normal
+            };
+            _driver = new EdgeDriver(options);
+        }
+
+        [TestMethod]
+        public void Shoud_Search_Using_Firefox()    
+        {
+            // Replace with your own test logic
+            using(var driver= new FirefoxDriver())
+            {
+
+            }
+            _driver.Url = "https://www.bing.com";
+            Assert.AreEqual("Bing", _driver.Title);
+        }
+
+        [TestCleanup]
+        public void EdgeDriverCleanup()
+        {
+            _driver.Quit();
+        }
+    }
+}
